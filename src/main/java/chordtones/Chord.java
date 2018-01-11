@@ -1,3 +1,6 @@
+package chordtones;
+
+
 public class Chord {
 	
 	private String name;

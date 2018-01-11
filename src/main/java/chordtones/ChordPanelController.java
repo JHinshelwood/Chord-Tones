@@ -1,3 +1,6 @@
+package chordtones;
+
+
 public class ChordPanelController {
 	
 	private ChordNotesPanel panel;
