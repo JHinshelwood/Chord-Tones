@@ -28,6 +28,10 @@ public class Controller {
 		addListeners();
 		
 		v = new View(panel);
+
+		CSVTest test = new CSVTest();
+			try {test.readCSV();
+		} catch(Exception e) {}
 	}
 	
 	public void addListeners() {
