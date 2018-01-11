@@ -1,38 +1,34 @@
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.*;
 
-public class View {
 
-    public View() {
+public class View extends JFrame {
 
-        Controller controller = new Controller();
-        Chords chords = new Chords();
+    private ChordNotesPanel p;
+    private JLabel label;
+    private JTabbedPane tabbedPane;
 
+    public View(ChordNotesPanel panel) {
 
-        JLabel chordName = new JLabel(chords.getCurrentChordName());
-        JTextField root = new JTextField(1);
-       
-
-        // Set the view layout
-
-        JPanel ctrlPane = new JPanel();
-
-        ctrlPane.add(chordName);
-
-        ctrlPane.add(root);
-
-
-        JFrame frame = new JFrame("Chord Tones");
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(ctrlPane);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
+    	this.p = panel;
+        setTitle("Chord Tones");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        createAndShowGUI(panel);
+        
     }
+    
+    
+    public void createAndShowGUI(ChordNotesPanel panel) {
+        
+            add(panel, BorderLayout.CENTER);
 
+         
+            setSize(500, 120);
+            setLocationRelativeTo(null);
+
+            setVisible(true);
+        }
  
 
 }

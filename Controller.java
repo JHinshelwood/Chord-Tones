@@ -1,68 +1,111 @@
-import java.util.*; 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
+
+import javax.swing.JOptionPane;
 
 public class Controller {
 
-	private Scanner scan;
 	private Chords chords;
+	private ChordNotesPanel panel;
+	private ChordsView chordsView; 
+	private View v;
+	private ArrayList<Chord> repeats;
+	
 	public Controller() {
-		scan = new Scanner(System.in);
+		chords = new Chords();
+		chords.addMajor7Chords();
+		chords.addMin7Chords();
+		
+		repeats = new ArrayList<Chord>();
+		
+		panel = new ChordNotesPanel();
+		panel.setChordLabel(chords.getCurrentName());
+		
+		addListeners();
+		
+		v = new View(panel);
+	}
+	
+	public void addListeners() {
+		addRevealListener();
+		addNextListener();
+		addChordsListener();
+		
+
 	}
 
-	public int generateIndex(Chords chords) {
+	public void addToRepeatList(Chord chord) {
+		if (repeats.size() < 5) repeats.add(chord);
+		else {
+			repeats.remove(0);
+			repeats.add(chord);
+		}
+	}
+
+	public int generateIndex() {
 		int size = chords.getSize();
 
 		Random r = new Random();
 		int index = r.nextInt(size);
 		return index;
 	}
+	
+	public void generateNewChord() {
+		int index = generateIndex();
+		Chord c = chords.getChordFromIndex(index);
+		
+		while (repeats.contains(c)) {
+			index = generateIndex();
+			c = chords.getChordFromIndex(index);
+		}
+		chords.setCurrentIndex(index);
+}
 
-	public Chord getChordFromIndex(Chords chords, int index) {
-		return chords.getChordFromIndex(index);
-	}
+	public void addRevealListener() {
+		panel.addRevealListener(new ActionListener() {
 
-	public String displayChordFromIndex(Chords chords, int index) {
-		Chord chord = getChordFromIndex(chords, index);
-		return chord.getName();
-	}
-
-	public String displayChordNotesFromIndex(Chords chords, int index) {
-		Chord chord = getChordFromIndex(chords, index);
-		return chord.getNotes();
-	}
-
-	public Chord generateIndexAndReturnChord(Chords chords) {
-		int index = generateIndex(chords);
-		return getChordFromIndex(chords, index);
-	}
-
-	public String generateIndexAndDisplayChord(Chords chords) {
-		int index = generateIndex(chords);
-		return displayChordFromIndex(chords, index);
-	}
-
-	public String generateIndexAndDisplayChordNotes(Chords chords) {
-		int index = generateIndex(chords);
-		return displayChordNotesFromIndex(chords, index);
-	}
-
-	public void task(Chords chords) {
-		int index = generateIndex(chords);
-		System.out.println(displayChordFromIndex(chords, index));
-		input();
-		System.out.println(displayChordNotesFromIndex(chords, index));
-		System.out.println("-------");
-		input();
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				panel.setNoteField(chords.getCurrentChordNotes());
+			}
+		});
 	}
 	
+	public void addNextListener() {
+		panel.addNextListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("next listener");
 
-
-	public void input() {
-		try {
-		System.in.read();
+				addToRepeatList(chords.getCurrentChord());
+				panel.setNoteField("");
+				generateNewChord();
+				panel.setChordLabel(chords.getCurrentName());
+				}
+		});
 	}
-		catch(Exception e){}
-	}
 
+	public void addChordsListener() {
+		panel.addChordsListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChordsView a = new ChordsView(chords);
+			}
+		});
+	}
 	
 	
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
