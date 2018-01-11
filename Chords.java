@@ -74,12 +74,13 @@ public class Chords {
 		chords.add(new Chord("BMaj7", "B", "D#", "F#", "A#", "C#"));
 		chords.add(new Chord("BbMaj7", "Bb", "D", "F", "A", "C"));
 
+
 	}
 	
 	public void addMin7Chords() {
 		chords.add(new Chord("CMin7", "C", "Eb", "G", "Bb"));
 		chords.add(new Chord("DMin7", "D", "F", "A", "C"));
-	}
+}
 }
 
 
