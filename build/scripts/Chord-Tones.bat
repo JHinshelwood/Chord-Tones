@@ -63,7 +63,7 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\Chord-Tones.jar
+set CLASSPATH=%APP_HOME%\lib\Chord-Tones.jar;%APP_HOME%\lib\commons-csv-1.5.jar
 
 @rem Execute Chord-Tones
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %CHORD_TONES_OPTS%  -classpath "%CLASSPATH%" chordtones.ChordTones %CMD_LINE_ARGS%
