@@ -1,6 +1,5 @@
 package chordtones;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -27,6 +26,9 @@ public class Controller {
 		addListeners();
 		
 		v = new View(panel);
+
+		ImageFrame s = new ImageFrame();
+
 	}
 	
 	public void addListeners() {
