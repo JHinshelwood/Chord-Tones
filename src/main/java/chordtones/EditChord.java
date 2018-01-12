@@ -87,6 +87,11 @@ public class EditChord extends JFrame {
 
 					chordsArray.removeChord(selectedIndex);
 					chordsArray.addChordIndex(selectedIndex, newChord);
+
+					try {
+				CSVReader c = new CSVReader();
+				c.writeContentToCSV(chordsArray);
+			} catch(Exception f) {f.printStackTrace();}
 					
 					dispose();
 				

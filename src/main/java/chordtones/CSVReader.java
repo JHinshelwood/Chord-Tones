@@ -45,7 +45,7 @@ public class CSVReader {
     }
 
 
-    public void writeContentToCSV(Chords chords, Chord chordToAdd) throws IOException {
+    public void writeContentToCSV(Chords chords) throws IOException {
     try (
         BufferedWriter writer = Files.newBufferedWriter(Paths.get(new File("").getAbsolutePath() + SAMPLE_CSV_FILE_PATH));
 

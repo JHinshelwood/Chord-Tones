@@ -76,7 +76,7 @@ public class AddChord extends JFrame {
 				
 				try {
 				CSVReader c = new CSVReader();
-				c.writeContentToCSV(chordsArray, newChord);
+				c.writeContentToCSV(chordsArray);
 			} catch(Exception f) {f.printStackTrace();}
 
 				dispose();
