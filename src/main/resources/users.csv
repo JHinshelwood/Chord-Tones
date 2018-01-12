@@ -1,5 +1,9 @@
-Name,Email,Phone,Country
-Rajeev Kumar Singh ,rajeevs@example.com,+91-9999999999,India
-Sachin Tendulkar,sachin@example.com,+91-9999999998,India
-Barak Obama,barak.obama@example.com,+1-1111111111,United States
-Donald Trump,donald.trump@example.com,+1-2222222222,United States
+Name,Root,Third,Fifth,Seventh
+CMaj7,C,E,G,B
+DMaj7,D,F#,A,C#
+EMaj7,E,G#,B,D#
+FMaj7,F,A,C,E
+GMaj7,G,B,D,F#
+AMaj7,A,C#,E,G#
+CSV,CSV,CSV,CSV,CSV
+

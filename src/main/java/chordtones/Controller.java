@@ -16,10 +16,15 @@ public class Controller {
 	private ArrayList<Chord> repeats;
 	
 	public Controller() {
-		chords = new Chords();
-		chords.addMajor7Chords();
-		chords.addMin7Chords();
 		
+		CSVReader read = new CSVReader();
+			try {read.readCSV();
+		} catch(Exception e) {e.printStackTrace();}
+
+		chords = read.getChords();
+		//chords.addMajor7Chords();
+		//chords.addMin7Chords();
+
 		repeats = new ArrayList<Chord>();
 		
 		panel = new ChordNotesPanel();
@@ -29,9 +34,7 @@ public class Controller {
 		
 		v = new View(panel);
 
-		CSVTest test = new CSVTest();
-			try {test.readCSV();
-		} catch(Exception e) {}
+		
 	}
 	
 	public void addListeners() {
