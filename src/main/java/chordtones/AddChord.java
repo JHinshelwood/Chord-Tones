@@ -64,10 +64,8 @@ public class AddChord extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 	        	
-				if (checkValidChord(nameField.getText(), rootField.getText(), thirdField.getText(), 
-						fifthField.getText(), seventhField.getText(), ninthField.getText())) {
-				Chord newChord = new Chord(nameField.getText(), rootField.getText(), thirdField.getText(), 
-						fifthField.getText(), seventhField.getText(), ninthField.getText());
+				if (checkValidChord(nameField.getText(), rootField.getText(), thirdField.getText(),fifthField.getText(), seventhField.getText(), ninthField.getText())) {
+				Chord newChord = new Chord(nameField.getText(), rootField.getText(), thirdField.getText(), fifthField.getText(), seventhField.getText(), ninthField.getText());
 				
 	        	//Add new chord to model for chord list previous window
 				model.addElement(newChord.getName());
@@ -75,15 +73,12 @@ public class AddChord extends JFrame {
 				chordsArray.addChord(newChord);
 				
 				try {
-				CSVReader c = new CSVReader();
-				c.writeContentToCSV(chordsArray);
-			} catch(Exception f) {f.printStackTrace();}
+				CSVReaderWriter c = new CSVReaderWriter();
+					c.writeContentToCSV(chordsArray);
+				} catch(Exception f) {f.printStackTrace();}
 
-				dispose();
-
-				
+					dispose();
 				}
-
 			}
 		});
 	}
@@ -100,8 +95,6 @@ public class AddChord extends JFrame {
 		}
 	}
 		return true;
-
-	
 	}
 }
 

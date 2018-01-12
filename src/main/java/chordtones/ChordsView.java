@@ -116,7 +116,7 @@ public void addDeleteButtonListener() {
 				}
 
 				try {
-				CSVReader c = new CSVReader();
+				CSVReaderWriter c = new CSVReaderWriter();
 				c.writeContentToCSV(chordList);
 			} catch(Exception f) {f.printStackTrace();}
 				
