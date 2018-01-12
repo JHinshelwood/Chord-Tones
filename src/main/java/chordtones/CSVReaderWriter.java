@@ -9,8 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-public class CSVReader {
-    private static final String SAMPLE_CSV_FILE_PATH = "/src/main/resources/users.csv";
+public class CSVReaderWriter {
+    private static final String SAMPLE_CSV_FILE_PATH = "/src/main/resources/chordNotes.csv";
     private static Chords chords;
 
     public static void readCSV() throws IOException {

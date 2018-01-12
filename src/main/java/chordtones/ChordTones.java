@@ -3,14 +3,8 @@ package chordtones;
 
 public class ChordTones {
  
-
 		public static void main(String[] args) {
 
 	        Controller c = new Controller();
-
-        
     }
-
-    
-
-	}
+}
