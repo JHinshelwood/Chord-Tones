@@ -2,12 +2,12 @@ package chordtones;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.csv.CSVPrinter;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class CSVReader {
     private static final String SAMPLE_CSV_FILE_PATH = "/src/main/resources/users.csv";
@@ -36,14 +36,27 @@ public class CSVReader {
 
                 chords.addChord(c);
 
-
-
-                
             }
         }
-        }
+    }
 
-        public Chords getChords() {
+    public Chords getChords() {
             return chords;
+    }
+
+
+    public void writeContentToCSV(Chords chords, Chord chordToAdd) throws IOException {
+    try (
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(new File("").getAbsolutePath() + SAMPLE_CSV_FILE_PATH));
+
+        CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
+                .withHeader("Name", "Root", "Third", "Fifth", "Seventh"))) {
+            
+            for (Chord c : chords.getChords()) {
+                csvPrinter.printRecord(c.getName(), c.getRoot(), c.getThird(),
+                    c.getFifth(), c.getSeventh());
+            } 
+         csvPrinter.flush();            
         }
     }
+}

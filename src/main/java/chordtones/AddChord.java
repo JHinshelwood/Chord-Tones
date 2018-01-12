@@ -73,7 +73,14 @@ public class AddChord extends JFrame {
 				model.addElement(newChord.getName());
 				
 				chordsArray.addChord(newChord);
+				
+				try {
+				CSVReader c = new CSVReader();
+				c.writeContentToCSV(chordsArray, newChord);
+			} catch(Exception f) {f.printStackTrace();}
+
 				dispose();
+
 				
 				}
 

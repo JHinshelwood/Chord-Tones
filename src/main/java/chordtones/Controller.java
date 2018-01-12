@@ -22,8 +22,7 @@ public class Controller {
 		} catch(Exception e) {e.printStackTrace();}
 
 		chords = read.getChords();
-		//chords.addMajor7Chords();
-		//chords.addMin7Chords();
+		
 
 		repeats = new ArrayList<Chord>();
 		
