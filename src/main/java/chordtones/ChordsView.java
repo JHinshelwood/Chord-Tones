@@ -114,6 +114,11 @@ public void addDeleteButtonListener() {
 					clickIndex = clickIndex -1;
 
 				}
+
+				try {
+				CSVReader c = new CSVReader();
+				c.writeContentToCSV(chordList);
+			} catch(Exception f) {f.printStackTrace();}
 				
 			
 			}
