@@ -17,13 +17,8 @@ public class Controller {
 	
 	public Controller() {
 		
-		CSVReader read = new CSVReader();
-			try {read.readCSV();
-		} catch(Exception e) {e.printStackTrace();}
-
-		chords = read.getChords();
+		readCSV();
 		
-
 		repeats = new ArrayList<Chord>();
 		
 		panel = new ChordNotesPanel();
@@ -32,16 +27,20 @@ public class Controller {
 		addListeners();
 		
 		v = new View(panel);
-
-		
 	}
 	
 	public void addListeners() {
 		addRevealListener();
 		addNextListener();
 		addChordsListener();
-		
+	}
 
+	public void readCSV() {
+		CSVReaderWriter read = new CSVReaderWriter();
+			try {read.readCSV();
+		} catch(Exception e) {e.printStackTrace();}
+
+		chords = read.getChords();
 	}
 
 	public void addToRepeatList(Chord chord) {
